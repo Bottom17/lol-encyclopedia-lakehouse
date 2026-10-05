@@ -5,8 +5,6 @@ on:
         workflows: ["LoL Encyclopedia Lakehouse CI Pipeline"]
         types:
             - completed
-        branches:
-            - master
 
 jobs:
     deploy:
@@ -14,6 +12,18 @@ jobs:
         # environment: staging # Define an environment for protection rules and secrets
         # needs: build-and-test # Ensure this job runs after the CI build-and-test job
 
+        steps:
+        - name: Checkout repo
+          uses: astral-sh/setup-uv@v6
+
+        - name: Confirm CI status
+          run: echo "CI pipeline completed. Ready for deployment."
+
+        - name: Deployment placeholder
+          run: |
+            echo "Starting deployment..."
+            echo "No deployment configured yet."
+            echo "CD pipeline finished."
         # steps:
         # - name: Download build artifact
         #   uses: actions/download-artifact@v4
