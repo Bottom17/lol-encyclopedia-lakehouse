@@ -1,0 +1,59 @@
+[project]
+name = "lol-encyclopedia-lakehouse"
+version = "0.1.0"
+description = "Web app that provides information on League of Legends champions"
+readme = "README.md"
+authors = [
+    { name = "Nuno Costa", email = "nunocosta.1712@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pre-commit>=4.6.2",
+]
+
+[project.scripts]
+lol-encyclopedia-lakehouse = "lol_encyclopedia_lakehouse:main"
+
+[dependency-groups]
+dev = [
+  {include-group = "lint"},
+  {include-group = "test"}
+]
+test = [
+    "pytest>=9.1.1",
+]
+lint = [
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".pyenv",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+]
+
+line-length = 88
+indent-width = 4
+select = [
+    "F",  # pyflakes rules
+    "E",  # pycodestyle error rules
+    "I",  # isort rules
+    "UP", # pyupgrade rules
+]
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["uv_build>=0.12.11,<0.13.0"]
+build-backend = "uv_build"
