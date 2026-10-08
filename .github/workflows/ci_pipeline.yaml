@@ -9,12 +9,24 @@ on:
             - master
 
 jobs:
+    scan:
+        name: gitleaks
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+            with:
+              fetch-depth: 0
+          - uses: gitleaks/gitleaks-action@v3
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     build-and-test:
+        needs: scan
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Install UV & Enable Caching for faster builds
               uses: astral-sh/setup-uv@v6
@@ -23,10 +35,13 @@ jobs:
                 cache-dependency-glob: "uv.lock"
 
             - name: Install/Sync dependencies
-              run: uv sync --locked --all-extras
+              run: uv sync --locked
 
-            - name: Run linter
-              run: uv run ruff check
+            - name: Run linter (no fixes)
+              run: uv run ruff check --output-format=github
+
+            - name: Check Ruff Formatting
+              run: uv run ruff format --check --diff
 
             - name: Run tests
               run: uv run pytest
