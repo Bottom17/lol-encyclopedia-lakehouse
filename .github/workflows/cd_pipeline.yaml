@@ -3,8 +3,6 @@ name: LoL Encyclopedia Lakehouse CD Pipeline
 on:
     workflow_run:
         workflows: ["LoL Encyclopedia Lakehouse CI Pipeline"]
-        types:
-            - completed
 
 jobs:
     deploy:
