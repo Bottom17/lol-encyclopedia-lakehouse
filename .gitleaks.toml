@@ -1,0 +1,9 @@
+title = "lol-encyclopedia-lakehouse"
+[extend]
+useDefault = true
+
+[[rules]]
+id = "riotgames-api-key"
+description = "Identified a potential RiotGames API Key."
+regex = '''(?i)(?:rgapi)(-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'''
+keywords = ["rgapi"]
