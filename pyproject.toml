@@ -14,12 +14,12 @@ lol-encyclopedia-lakehouse = "lol_encyclopedia_lakehouse:main"
 
 [dependency-groups]
 dev = [
-  {include-group = "lint"},
-  {include-group = "test"}
+    {include-group = "lint"},
+    {include-group = "test"},
+    "pre-commit>=4.6.2",
 ]
 test = [
     "pytest>=9.1.1",
-    "pre-commit>=4.6.2",
 ]
 lint = [
     "ruff>=0.16.10",

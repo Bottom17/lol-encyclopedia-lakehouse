@@ -71,7 +71,6 @@ lint = [
     { name = "ruff" },
 ]
 test = [
-    { name = "pre-commit" },
     { name = "pytest" },
 ]
 
@@ -84,10 +83,7 @@ dev = [
     { name = "ruff", specifier = ">=0.16.10" },
 ]
 lint = [{ name = "ruff", specifier = ">=0.16.10" }]
-test = [
-    { name = "pre-commit", specifier = ">=4.6.2" },
-    { name = "pytest", specifier = ">=9.1.1" },
-]
+test = [{ name = "pytest", specifier = ">=9.1.1" }]
 
 [[package]]
 name = "nodeenv"
