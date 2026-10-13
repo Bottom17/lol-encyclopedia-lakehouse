@@ -60,12 +60,10 @@ wheels = [
 name = "lol-encyclopedia-lakehouse"
 version = "0.1.0"
 source = { editable = "." }
-dependencies = [
-    { name = "pre-commit" },
-]
 
 [package.dev-dependencies]
 dev = [
+    { name = "pre-commit" },
     { name = "pytest" },
     { name = "ruff" },
 ]
@@ -77,10 +75,10 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pre-commit", specifier = ">=4.6.2" }]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "pre-commit", specifier = ">=4.6.2" },
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "ruff", specifier = ">=0.16.10" },
 ]
